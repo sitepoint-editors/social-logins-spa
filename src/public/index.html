@@ -1,6 +1,34 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Social Logins for Single Page Applications</title>
-    </head>
+<head>
+    <title>Social Logins for Single Page Applications</title>
+</head>
+<body>
+    <div>
+        Response Status: <span id="status"></span>
+    </div>
+    <div>
+        Output from request: <span id="output"></span>
+    </div>
+    <div>
+        <button id="insecure">Insecure Request</button>
+        <button id="secure">Secure Request</button>
+    </div>
+    <script type="text/javascript">
+        function makeRequest(url) {
+            fetch(url)
+                .then((response) => {
+                    document.getElementById('status').innerText = response.statusText;
+                    response.text()
+                        .then((text) => {
+                            document.getElementById('output').innerText = text;
+                        });
+
+                });
+        }
+
+        document.getElementById('insecure').onclick = () => makeRequest('/api/insecure');
+        document.getElementById('secure').onclick = () => makeRequest('/api/secure');
+    </script>
+</body>
 </html>
