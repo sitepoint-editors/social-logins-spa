@@ -1,5 +1,11 @@
 // The actual database of users
-const users = [];
+const users = [
+    {
+        id: 0,
+        name: 'Graham',
+        providers: []
+    }
+];
 
 // Get a single user by their Internal ID
 function getUserById(id) {

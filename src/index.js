@@ -21,4 +21,6 @@ app.get('/api/secure',
 const port = config.get('http.port');
 app.listen(port, () => {
     console.log('Server listening on port ' + port);
+
+    console.log('JWT for demo: ' + require('./token').generateAccessToken(0));
 });
