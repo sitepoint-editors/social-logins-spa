@@ -1,7 +1,10 @@
 const express = require('express');
 const config = require('./config');
+const passport = require('passport');
 
 const app = express();
+app.use(passport.initialize());
+
 app.use(express.static('src/public'));
 
 app.get('/api/insecure', (req, res) => {
