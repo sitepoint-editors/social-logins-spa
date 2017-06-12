@@ -9,6 +9,18 @@ const config = convict({
         }
     },
     authentication: {
+        google: {
+            "clientId": {
+                "doc": "The Client ID from Google to use for authentication",
+                "default": "",
+                "env": "GOOGLE_CLIENTID"
+            },
+            "clientSecret": {
+                "doc": "The Client Secret from Google to use for authentication",
+                "default": "",
+                "env": "GOOGLE_CLIENTSECRET"
+            }
+        },
         token: {
             secret: {
                 doc: 'The signing key for the JWT',
