@@ -5,6 +5,7 @@ const passport = require('passport');
 const token = require('./token');
 require('./authentication/jwt');
 require('./authentication/google');
+require('./authentication/facebook');
 
 // Generate the Token for the user authenticated in the request
 function generateUserToken(req, res) {
@@ -27,6 +28,12 @@ app.get('/api/authentication/google/start',
     passport.authenticate('google', { session: false, scope: ['openid', 'profile', 'email'] }));
 app.get('/api/authentication/google/redirect',
     passport.authenticate('google', { session: false }),
+    generateUserToken);
+
+app.get('/api/authentication/facebook/start',
+    passport.authenticate('facebook', { session: false }));
+app.get('/api/authentication/facebook/redirect',
+    passport.authenticate('facebook', { session: false }),
     generateUserToken);
 
 app.get('/api/insecure', (req, res) => {

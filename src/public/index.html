@@ -16,6 +16,7 @@
     </div>
     <div>
         <button id="google">Authenticate with Google+</button>
+        <button id="facebook">Authenticate with Facebook</button>
     </div>
     <script type="text/javascript">
         let accessToken;
@@ -48,6 +49,7 @@
         document.getElementById('insecure').onclick = () => makeRequest('/api/insecure');
         document.getElementById('secure').onclick = () => makeRequest('/api/secure');
         document.getElementById('google').onclick = () => authenticate('google');
+        document.getElementById('facebook').onclick = () => authenticate('facebook');
     </script>
 </body>
 </html>

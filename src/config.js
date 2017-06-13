@@ -21,6 +21,18 @@ const config = convict({
                 "env": "GOOGLE_CLIENTSECRET"
             }
         },
+        facebook: {
+            "clientId": {
+                "doc": "The Client ID from Facebook to use for authentication",
+                "default": "",
+                "env": "FACEBOOK_CLIENTID"
+            },
+            "clientSecret": {
+                "doc": "The Client Secret from Facebook to use for authentication",
+                "default": "",
+                "env": "FACEBOOK_CLIENTSECRET"
+            }
+        },
         token: {
             secret: {
                 doc: 'The signing key for the JWT',
