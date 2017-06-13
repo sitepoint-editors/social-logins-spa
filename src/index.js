@@ -36,7 +36,7 @@ app.get('/api/insecure', (req, res) => {
 app.get('/api/secure',
     passport.authenticate(['jwt'], { session: false }),
     (req, res) => {
-        res.send('Secure response');
+        res.send('Secure response from ' + JSON.stringify(req.user));
     });
 
 const port = config.get('http.port');
