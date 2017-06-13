@@ -14,9 +14,19 @@
         <button id="insecure">Insecure Request</button>
         <button id="secure">Secure Request</button>
     </div>
+    <div>
+        <button id="google">Authenticate with Google+</button>
+    </div>
     <script type="text/javascript">
+        let accessToken;
+
         function makeRequest(url) {
-            fetch(url)
+            const headers = {};
+            if (accessToken) {
+                headers['Authorization'] = 'JWT ' + accessToken;
+            }
+
+            fetch(url, { headers: headers })
                 .then((response) => {
                     document.getElementById('status').innerText = response.statusText;
                     response.text()
@@ -27,8 +37,17 @@
                 });
         }
 
+        function authenticate(provider) {
+            window.authenticateCallback = function(token) {
+                accessToken = token;
+            };
+
+            window.open('/api/authentication/' + provider + '/start');
+        }
+
         document.getElementById('insecure').onclick = () => makeRequest('/api/insecure');
         document.getElementById('secure').onclick = () => makeRequest('/api/secure');
+        document.getElementById('google').onclick = () => authenticate('google');
     </script>
 </body>
 </html>

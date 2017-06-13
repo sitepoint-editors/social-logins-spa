@@ -1,4 +1,5 @@
 const express = require('express');
+const mustacheExpress = require('mustache-express');
 const config = require('./config');
 const passport = require('passport');
 const token = require('./token');
@@ -8,10 +9,16 @@ require('./authentication/google');
 // Generate the Token for the user authenticated in the request
 function generateUserToken(req, res) {
     const accessToken = token.generateAccessToken(req.user.id);
-    res.json(accessToken);
+    res.render('authenticated.html', {
+        token: accessToken
+    });
 }
 
 const app = express();
+app.engine('html', mustacheExpress());
+app.set('view engine', 'mustache');
+app.set('views', __dirname + '/public');
+
 app.use(passport.initialize());
 
 app.use(express.static('src/public'));
