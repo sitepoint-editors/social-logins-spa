@@ -11,6 +11,8 @@ Google Credentials can be obtained from the [Google Developer Dashboard](https:/
 * Click on the "Select a Project" dropdown in the header bar
 * Click the "Create Project" button
 * Create a new Project
+* Open the Library page from the sidebar
+* Select the "Google+ API" entry and ensure that this is enabled. You *might* also need to enable the "Google+ Domains API" entry as well
 * Open the Credentials page from the sidebar
 * Open the "OAuth Consent Screen" tab and fill it out
 * Click the "Create credentials" button and select "OAuth client ID"
